@@ -1,10 +1,17 @@
 import './stimulus_bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
 import './styles/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as bootstrap from 'bootstrap';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+function initToasts() {
+    document.querySelectorAll('.toast').forEach(toastEl => {
+        new bootstrap.Toast(toastEl, { delay: 4000 }).show();
+    });
+}
+
+// Chargement initial
+document.addEventListener('DOMContentLoaded', initToasts);
+
+// Navigation via Turbo
+document.addEventListener('turbo:load', initToasts);
+document.addEventListener('turbo:render', initToasts);
