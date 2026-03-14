@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include "dashboard/component/_header.html.twig" %}
+    <div class="container-fluid">
+        <div class="row">
+            
+            {% include "dashboard/component/_sidebar.html.twig" %}
+            <main class="col">
+                {% block main %}{% endblock %}
+            </main>
+        </div>
+    </div>
+{% endblock %}
